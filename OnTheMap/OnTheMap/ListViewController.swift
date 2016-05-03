@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
@@ -26,6 +26,18 @@ class ListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: TableView Delegate Implementation
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0 //TODO: update
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell() //TODO: update
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
 }
 
