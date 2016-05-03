@@ -9,6 +9,12 @@
 import UIKit
 
 class ListViewController: UIViewController {
+  
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    @IBOutlet weak var composeButton: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
