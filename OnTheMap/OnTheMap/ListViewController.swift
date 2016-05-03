@@ -12,7 +12,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
-    @IBOutlet weak var composeButton: UIBarButtonItem!
+    @IBOutlet weak var pinButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
     
