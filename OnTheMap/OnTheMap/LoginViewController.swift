@@ -111,6 +111,12 @@ class LoginViewController: UIViewController {
         })
         
     }
+    
+    // method that gets called when sign up button is pressed which takes the user to Udacity's sign up page
+    @IBAction func signupButtonPressed() {
+        let app = UIApplication.sharedApplication()
+        app.openURL(NSURL(string: Constants.Udacity.signupURL)!)
+    }
 
 }
 

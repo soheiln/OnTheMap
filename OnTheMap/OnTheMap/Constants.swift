@@ -15,6 +15,7 @@ struct Constants {
         static let APIScheme = "https"
         static let APIHost = "www.udacity.com"
         static let getSessionPath = "/api/session"
+        static let signupURL = "https://www.udacity.com/account/auth#!/signup"
     }
     
     

@@ -62,7 +62,7 @@
                                 <rect key="frame" x="390" y="361" width="55" height="30"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <segue destination="19w-4d-Gqh" kind="show" id="SPb-Yl-Bsl"/>
+                                    <action selector="signupButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="hPJ-IV-Brv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -506,6 +506,6 @@
         <image name="udacity" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AOm-9U-WEI"/>
+        <segue reference="o3d-Nm-BrA"/>
     </inferredMetricsTieBreakers>
 </document>
