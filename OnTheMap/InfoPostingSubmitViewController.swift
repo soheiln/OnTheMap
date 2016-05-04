@@ -32,5 +32,7 @@ class InfoPostingSubmitViewController: UIViewController, MKMapViewDelegate {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    
 }
 
