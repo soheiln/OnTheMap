@@ -43,8 +43,8 @@ class UdacityClient {
     
     
     // Method that gets the public user data
-    static func getPublicUserData(userID: Int, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) {
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/\(userID)")!)
+    static func getPublicUserData(accountKey: String, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) {
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/\(accountKey)")!)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request, completionHandler: completionHandler)
         task.resume()

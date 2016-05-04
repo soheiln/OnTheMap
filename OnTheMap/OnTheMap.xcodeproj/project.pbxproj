@@ -21,6 +21,8 @@
 		185B06981CDA44C7007CABE3 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B06971CDA44C7007CABE3 /* UdacityClient.swift */; };
 		185B069A1CDA4931007CABE3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B06991CDA4931007CABE3 /* Constants.swift */; };
 		185B069C1CDA6292007CABE3 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B069B1CDA6292007CABE3 /* GCDBlackBox.swift */; };
+		185B069E1CDA72D8007CABE3 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B069D1CDA72D8007CABE3 /* ParseClient.swift */; };
+		185B06A01CDA749A007CABE3 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B069F1CDA749A007CABE3 /* StudentLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		185B06971CDA44C7007CABE3 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		185B06991CDA4931007CABE3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		185B069B1CDA6292007CABE3 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		185B069D1CDA72D8007CABE3 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		185B069F1CDA749A007CABE3 /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,8 +160,10 @@
 		185B06961CDA449D007CABE3 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
-				185B06971CDA44C7007CABE3 /* UdacityClient.swift */,
 				185B06991CDA4931007CABE3 /* Constants.swift */,
+				185B06971CDA44C7007CABE3 /* UdacityClient.swift */,
+				185B069D1CDA72D8007CABE3 /* ParseClient.swift */,
+				185B069F1CDA749A007CABE3 /* StudentLocation.swift */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -294,11 +300,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				185B06621CD94F3B007CABE3 /* LoginViewController.swift in Sources */,
+				185B06A01CDA749A007CABE3 /* StudentLocation.swift in Sources */,
 				185B068E1CD95091007CABE3 /* MapViewController.swift in Sources */,
 				185B06901CD950B6007CABE3 /* ListViewController.swift in Sources */,
 				185B06921CD950DE007CABE3 /* InfoPostingViewController.swift in Sources */,
 				185B06601CD94F3B007CABE3 /* AppDelegate.swift in Sources */,
 				185B06981CDA44C7007CABE3 /* UdacityClient.swift in Sources */,
+				185B069E1CDA72D8007CABE3 /* ParseClient.swift in Sources */,
 				185B06941CD97620007CABE3 /* InfoPostingSubmitViewController.swift in Sources */,
 				185B069C1CDA6292007CABE3 /* GCDBlackBox.swift in Sources */,
 				185B069A1CDA4931007CABE3 /* Constants.swift in Sources */,
