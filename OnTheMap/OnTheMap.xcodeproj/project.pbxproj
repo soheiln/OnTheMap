@@ -17,6 +17,7 @@
 		185B068E1CD95091007CABE3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B068D1CD95091007CABE3 /* MapViewController.swift */; };
 		185B06901CD950B6007CABE3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B068F1CD950B6007CABE3 /* ListViewController.swift */; };
 		185B06921CD950DE007CABE3 /* InfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B06911CD950DE007CABE3 /* InfoPostingViewController.swift */; };
+		185B06941CD97620007CABE3 /* InfoPostingSubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B06931CD97620007CABE3 /* InfoPostingSubmitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		185B068D1CD95091007CABE3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		185B068F1CD950B6007CABE3 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		185B06911CD950DE007CABE3 /* InfoPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPostingViewController.swift; sourceTree = "<group>"; };
+		185B06931CD97620007CABE3 /* InfoPostingSubmitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoPostingSubmitViewController.swift; path = ../InfoPostingSubmitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		185B065E1CD94F3B007CABE3 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				185B06931CD97620007CABE3 /* InfoPostingSubmitViewController.swift */,
 				185B065F1CD94F3B007CABE3 /* AppDelegate.swift */,
 				185B06611CD94F3B007CABE3 /* LoginViewController.swift */,
 				185B06631CD94F3B007CABE3 /* Main.storyboard */,
@@ -270,6 +273,7 @@
 				185B06901CD950B6007CABE3 /* ListViewController.swift in Sources */,
 				185B06921CD950DE007CABE3 /* InfoPostingViewController.swift in Sources */,
 				185B06601CD94F3B007CABE3 /* AppDelegate.swift in Sources */,
+				185B06941CD97620007CABE3 /* InfoPostingSubmitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

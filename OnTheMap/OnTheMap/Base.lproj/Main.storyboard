@@ -286,6 +286,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Find on the Map"/>
+                                        <connections>
+                                            <segue destination="M0F-Qs-eeH" kind="presentation" id="6YQ-qP-Xfw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -405,6 +408,92 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPq-MX-8zh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2054" y="855"/>
+        </scene>
+        <!--Info Posting Submit View Controller-->
+        <scene sceneID="wm0-Rp-xst">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HKf-hl-ZRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="M0F-Qs-eeH" userLabel="Info Posting Submit View Controller" customClass="InfoPostingSubmitViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HqV-Ps-jdB"/>
+                        <viewControllerLayoutGuide type="bottom" id="jbC-dE-3iE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PDz-mq-psD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Juf-sq-N41">
+                                <rect key="frame" x="0.0" y="20" width="600" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.17648309470000001" blue="0.37138007200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="T7E-oJ-02p"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="yfH-rt-YMK">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="cancel" id="ueh-JS-ZNz" userLabel="cancelButton">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="cancelButtonPressed:" destination="M0F-Qs-eeH" id="Sao-wL-3W1"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cQM-iF-avZ" userLabel="mapView">
+                                <rect key="frame" x="0.0" y="270" width="600" height="330"/>
+                            </mapView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter URL ..." textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="MXt-Js-iFH" userLabel="textField">
+                                <rect key="frame" x="0.0" y="70" width="600" height="200"/>
+                                <color key="backgroundColor" red="0.0" green="0.17648309470000001" blue="0.37138007200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="jxJ-RB-rq4"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-nZ-TIK" userLabel="submitButton">
+                                <rect key="frame" x="200" y="531" width="200" height="39"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="reE-SA-sfp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Submit"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="MXt-Js-iFH" secondAttribute="trailing" id="0xd-lN-eqs"/>
+                            <constraint firstAttribute="trailing" secondItem="Juf-sq-N41" secondAttribute="trailing" id="3aO-Ac-Ojb"/>
+                            <constraint firstItem="Juf-sq-N41" firstAttribute="top" secondItem="HqV-Ps-jdB" secondAttribute="bottom" id="9dq-B2-bLZ"/>
+                            <constraint firstItem="cOX-nZ-TIK" firstAttribute="top" secondItem="cQM-iF-avZ" secondAttribute="bottom" constant="-77" id="H8D-zj-ztA"/>
+                            <constraint firstItem="jbC-dE-3iE" firstAttribute="top" secondItem="cQM-iF-avZ" secondAttribute="bottom" id="HGR-Ys-gWz"/>
+                            <constraint firstAttribute="trailing" secondItem="cQM-iF-avZ" secondAttribute="trailing" id="Hlh-et-ZXB"/>
+                            <constraint firstItem="cQM-iF-avZ" firstAttribute="leading" secondItem="PDz-mq-psD" secondAttribute="leading" id="HmT-tK-kcL"/>
+                            <constraint firstItem="Juf-sq-N41" firstAttribute="leading" secondItem="PDz-mq-psD" secondAttribute="leading" id="MGd-an-fhk"/>
+                            <constraint firstItem="cOX-nZ-TIK" firstAttribute="centerX" secondItem="PDz-mq-psD" secondAttribute="centerX" id="Nfm-KB-wJe"/>
+                            <constraint firstItem="MXt-Js-iFH" firstAttribute="top" secondItem="Juf-sq-N41" secondAttribute="bottom" id="dda-Gk-tkn"/>
+                            <constraint firstItem="MXt-Js-iFH" firstAttribute="leading" secondItem="PDz-mq-psD" secondAttribute="leading" id="hD8-eh-aVI"/>
+                            <constraint firstItem="jbC-dE-3iE" firstAttribute="top" secondItem="cOX-nZ-TIK" secondAttribute="bottom" constant="30" id="oLz-yx-wBW"/>
+                            <constraint firstItem="cQM-iF-avZ" firstAttribute="top" secondItem="MXt-Js-iFH" secondAttribute="bottom" id="rhD-4h-F9k"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="H8D-zj-ztA"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="ueh-JS-ZNz" id="xcL-1W-FWL"/>
+                        <outlet property="mapButton" destination="cOX-nZ-TIK" id="FTv-jX-8Qp"/>
+                        <outlet property="mapView" destination="cQM-iF-avZ" id="Vdd-kK-Hrv"/>
+                        <outlet property="submitButton" destination="cOX-nZ-TIK" id="PCI-oo-Qv6"/>
+                        <outlet property="textField" destination="MXt-Js-iFH" id="8OR-iY-8Zm"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="4267" y="478"/>
         </scene>
     </scenes>
     <resources>
