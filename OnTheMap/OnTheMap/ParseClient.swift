@@ -58,8 +58,8 @@ class ParseClient {
                 sl.mediaURL = item["mediaURL"] as? String
                 sl.objectID = item["objectID"] as? String
                 sl.uniqueKey = item["uniqueKey"] as? String
-                sl.latitute = item["latitute"] as? Float
-                sl.longitude = item["longitude"] as? Float
+                sl.latitute = item["latitude"] as? Double
+                sl.longitude = item["longitude"] as? Double
                 studentLocations.append(sl)
             }
             completionHandler(studentLocations)

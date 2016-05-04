@@ -15,18 +15,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var pinButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
+    var appDelegate: AppDelegate!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
-        loadSamplePins() //TODO: update
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        print("in MapVC viewDidLoad")
+        mapView.delegate = self
+        loadPins()
     }
     
     // MARK: MapViewDelegate Implementation
@@ -41,7 +38,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.pinColor = .Red
+            pinView!.pinTintColor = UIColor.redColor()
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         }
         else {
@@ -67,10 +64,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
 
 extension MapViewController {
-    func loadSamplePins() {
+    func loadPins() {
         // The "locations" array is an array of dictionary objects that are similar to the JSON
         // data that you can download from parse.
-        let locations = hardCodedLocationData()
+        let locations = appDelegate.studentLocations!
         
         // We will create an MKPointAnnotation for each dictionary in "locations". The
         // point annotations will be stored in this array, and then provided to the map view.
@@ -80,19 +77,20 @@ extension MapViewController {
         // to create map annotations. This would be more stylish if the dictionaries were being
         // used to create custom structs. Perhaps StudentLocation structs.
         
-        for dictionary in locations {
+        for location in locations {
+            print("for location in locations.. location\n: \(location) ")
             
             // Notice that the float values are being used to create CLLocationDegree values.
             // This is a version of the Double type.
-            let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
-            let long = CLLocationDegrees(dictionary["longitude"] as! Double)
+            let lat = CLLocationDegrees(location.latitute!)
+            let long = CLLocationDegrees(location.longitude!)
             
             // The lat and long are used to create a CLLocationCoordinates2D instance.
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             
-            let first = dictionary["firstName"] as! String
-            let last = dictionary["lastName"] as! String
-            let mediaURL = dictionary["mediaURL"] as! String
+            let first = location.firstName!
+            let last = location.lastName!
+            let mediaURL = location.mediaURL!
             
             // Here we create the annotation and set its coordiate, title, and subtitle properties
             let annotation = MKPointAnnotation()
@@ -105,7 +103,9 @@ extension MapViewController {
         }
         
         // When the array is complete, we add the annotations to the map.
+        print("before adding mapView annotations")
         self.mapView.addAnnotations(annotations)
+        print("after adding mapView annotations")
 
     }
     

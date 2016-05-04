@@ -17,6 +17,6 @@ struct StudentLocation {
     var mediaURL: String?
     var objectID: String?
     var uniqueKey: String?
-    var latitute: Float?
-    var longitude: Float?
+    var latitute: Double?
+    var longitude: Double?
 }

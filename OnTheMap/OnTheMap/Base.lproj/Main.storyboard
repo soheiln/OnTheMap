@@ -61,6 +61,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRn-C6-8v4" userLabel="signupButton">
                                 <rect key="frame" x="390" y="361" width="55" height="30"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <segue destination="19w-4d-Gqh" kind="show" id="SPb-Yl-Bsl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.68610460920569971" blue="0.31597469536679823" alpha="1" colorSpace="calibratedRGB"/>
@@ -356,7 +359,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="ekI-vH-VLD">
             <objects>
-                <tabBarController id="19w-4d-Gqh" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="UITabBarController" id="19w-4d-Gqh" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="AQ1-bq-1c3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
