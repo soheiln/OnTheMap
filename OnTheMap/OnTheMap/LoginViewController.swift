@@ -105,7 +105,7 @@ class LoginViewController: UIViewController {
                 self.appDelegate.studentLocations = studentLocations
                 performUIUpdatesOnMain {
                     let tabBarVC = self.storyboard?.instantiateViewControllerWithIdentifier("UITabBarController") as! UITabBarController
-                    self.presentViewController(tabBarVC, animated: true, completion: nil)                    
+                    self.presentViewController(tabBarVC, animated: true, completion: nil)
                 }
         })
     }
@@ -122,7 +122,6 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     // MARK: Helper functions
-    
     private func showAlret(message: String) {
         performUIUpdatesOnMain {
             let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -131,7 +130,7 @@ extension LoginViewController {
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
-
+    
     private func setUIEnabled(enabled: Bool) {
         emailField.enabled = enabled
         passwordField.enabled = enabled
