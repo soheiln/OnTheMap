@@ -209,7 +209,11 @@
                             </button>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem style="plain" systemItem="refresh" id="uKo-5r-qy3" userLabel="refreshButton"/>
+                            <barButtonItem style="plain" systemItem="refresh" id="uKo-5r-qy3" userLabel="refreshButton">
+                                <connections>
+                                    <action selector="refreshButtonPressed:" destination="FUa-gh-4p5" id="QzR-bT-t3e"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="pin" style="plain" id="rAC-qo-CLI" userLabel="pinButton">
                                 <connections>
                                     <segue destination="N6v-a1-JjZ" kind="presentation" id="o3d-Nm-BrA"/>

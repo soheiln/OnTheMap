@@ -97,8 +97,6 @@ class LoginViewController: UIViewController {
     // This method takes Udacity sessionID and accountKey as arguments and loads
     // the map view with data
     func loadMapViewWithData(sessionID: String, accountKey: String) {
-        print("in loadMapViewWithData")
-                
         ParseClient.getStudentLocations({
                 print("in getStudentLocations error handler")
                 print($2!.localizedDescription)
@@ -109,7 +107,6 @@ class LoginViewController: UIViewController {
                 let tabBarVC = self.storyboard?.instantiateViewControllerWithIdentifier("UITabBarController") as! UITabBarController
                 self.presentViewController(tabBarVC, animated: true, completion: nil)
         })
-        
     }
     
     // method that gets called when sign up button is pressed which takes the user to Udacity's sign up page

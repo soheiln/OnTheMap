@@ -14,7 +14,7 @@ class ParseClient {
     static func getStudentLocations(errorHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?, completionHandler: ([StudentLocation]) -> Void) {
 
         print("in getStudentLocations: error == nil")
-        let request = NSMutableURLRequest(URL: NSURL(string: Constants.Parse.studentLocationMethod)!)
+        let request = NSMutableURLRequest(URL: NSURL(string: Constants.Parse.studentLocationMethod + Constants.Parse.studentLocationMethodParameters)!)
         request.addValue(Constants.Parse.ApplicationID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(Constants.Parse.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
