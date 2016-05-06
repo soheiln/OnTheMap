@@ -13,7 +13,6 @@ class ParseClient {
     // method that gets student locations
     static func getStudentLocations(errorHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?, completionHandler: ([StudentLocation]) -> Void) {
 
-        print("in getStudentLocations: error == nil")
         let request = NSMutableURLRequest(URL: NSURL(string: Constants.Parse.studentLocationMethod + Constants.Parse.studentLocationMethodParameters)!)
         request.addValue(Constants.Parse.ApplicationID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(Constants.Parse.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -23,7 +22,6 @@ class ParseClient {
             
             // handle error
             guard (error_ == nil) else {
-                print("in getStudentLocations: error == nil")
                 if let errorHandler = errorHandler {
                     errorHandler(data, response, error_)
                 }
@@ -35,10 +33,8 @@ class ParseClient {
             // parse data
             let parsedResult: AnyObject!
             do {
-                print("in getStudentLocations: do { parse data ...")
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
             } catch {
-                print("in getStudentLocations: in catch...")
                 if let errorHandler = errorHandler {
                     errorHandler(data, response, error_)
                 }

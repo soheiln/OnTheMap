@@ -41,8 +41,6 @@ class LoginViewController: UIViewController {
             UdacityClient.getUdacitySession(username, password: password, completionHandler: { (data, response, error) in
                 
                 print("in getUdacitySession completion handler")
-                print("response: \(response) \n\n\n")
-
                 // handle error
                 guard (error == nil) else {
                     self.showAlret("There was an error with login request: \(error)")
@@ -86,8 +84,10 @@ class LoginViewController: UIViewController {
                 self.appDelegate.udacitySessionID = sessionID
                 
                 // enable UI
-                self.setUIEnabled(true)
-                self.loadMapViewWithData(self.appDelegate.udacitySessionID!, accountKey: self.appDelegate.udacityAccountKey!)
+                performUIUpdatesOnMain {
+                    self.setUIEnabled(true)
+                    self.loadMapViewWithData(self.appDelegate.udacitySessionID!, accountKey: self.appDelegate.udacityAccountKey!)
+                }
             })
             
         }
@@ -102,10 +102,11 @@ class LoginViewController: UIViewController {
                 print($2!.localizedDescription)
             }, completionHandler: { (studentLocations) in
                 print("in getStudentLocations completion handler")
-                print(studentLocations)
                 self.appDelegate.studentLocations = studentLocations
-                let tabBarVC = self.storyboard?.instantiateViewControllerWithIdentifier("UITabBarController") as! UITabBarController
-                self.presentViewController(tabBarVC, animated: true, completion: nil)
+                performUIUpdatesOnMain {
+                    let tabBarVC = self.storyboard?.instantiateViewControllerWithIdentifier("UITabBarController") as! UITabBarController
+                    self.presentViewController(tabBarVC, animated: true, completion: nil)                    
+                }
         })
     }
     
