@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N6v-a1-JjZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -272,7 +272,7 @@
                                     <navigationItem id="elZ-5N-Pej">
                                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="cancel" id="GeC-Zc-Hkm" userLabel="cancelButton">
                                             <connections>
-                                                <action selector="cancelButtonPressed:" destination="N6v-a1-JjZ" id="5Jn-E3-JGa"/>
+                                                <action selector="cancelButtonPressed:" destination="N6v-a1-JjZ" id="4X8-q7-1o3"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -283,6 +283,13 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="Lo7-HM-OZT"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haB-Tm-t7t" userLabel="bottomView">
+                                <rect key="frame" x="0.0" y="460" width="600" height="140"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="rQr-QP-BFa"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCa-8i-cbc" userLabel="topLabel">
@@ -301,29 +308,18 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haB-Tm-t7t" userLabel="bottomView">
-                                <rect key="frame" x="0.0" y="460" width="600" height="140"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPo-pI-q9B" userLabel="mapButton">
-                                        <rect key="frame" x="200" y="51" width="200" height="39"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="kfQ-Yq-Ui6"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="Find on the Map"/>
-                                        <connections>
-                                            <segue destination="M0F-Qs-eeH" kind="presentation" id="6YQ-qP-Xfw"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPo-pI-q9B" userLabel="mapButton">
+                                <rect key="frame" x="200" y="511" width="200" height="39"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="FPo-pI-q9B" firstAttribute="centerX" secondItem="haB-Tm-t7t" secondAttribute="centerX" id="Bcq-yg-G7b"/>
-                                    <constraint firstItem="FPo-pI-q9B" firstAttribute="centerY" secondItem="haB-Tm-t7t" secondAttribute="centerY" id="S0L-U1-mrm"/>
-                                    <constraint firstAttribute="height" constant="140" id="rQr-QP-BFa"/>
+                                    <constraint firstAttribute="width" constant="200" id="kfQ-Yq-Ui6"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Find on the Map"/>
+                                <connections>
+                                    <action selector="mapButtonPressed:" destination="N6v-a1-JjZ" eventType="touchUpInside" id="2Si-A4-JkJ"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter Location ..." textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="J9U-4E-Lov" userLabel="textField">
                                 <rect key="frame" x="0.0" y="230" width="600" height="230"/>
                                 <color key="backgroundColor" red="0.0" green="0.17648309466869774" blue="0.37138007198952883" alpha="1" colorSpace="calibratedRGB"/>
@@ -341,8 +337,10 @@
                             <constraint firstItem="NBe-vi-Qch" firstAttribute="top" secondItem="N5t-FJ-lvY" secondAttribute="bottom" id="5Ct-0r-lPl"/>
                             <constraint firstItem="haB-Tm-t7t" firstAttribute="leading" secondItem="1vj-M0-ley" secondAttribute="leading" id="6QQ-hk-u8Q"/>
                             <constraint firstItem="dmm-Yd-aEO" firstAttribute="top" secondItem="haB-Tm-t7t" secondAttribute="bottom" id="7PJ-fj-1gL"/>
+                            <constraint firstItem="FPo-pI-q9B" firstAttribute="centerY" secondItem="haB-Tm-t7t" secondAttribute="centerY" id="7aC-A5-Gyb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GCa-8i-cbc" secondAttribute="trailing" constant="259" id="8A7-8y-vfp"/>
                             <constraint firstItem="GCa-8i-cbc" firstAttribute="centerX" secondItem="NBe-vi-Qch" secondAttribute="centerX" id="EID-A0-Yg7"/>
+                            <constraint firstItem="FPo-pI-q9B" firstAttribute="centerX" secondItem="haB-Tm-t7t" secondAttribute="centerX" id="J2i-uR-Q5Q"/>
                             <constraint firstItem="J9U-4E-Lov" firstAttribute="leading" secondItem="1vj-M0-ley" secondAttribute="leading" id="KEK-SQ-GNx"/>
                             <constraint firstItem="GCa-8i-cbc" firstAttribute="top" secondItem="lNh-2g-pC2" secondAttribute="bottom" constant="106" id="QiZ-u2-gCE"/>
                             <constraint firstAttribute="trailing" secondItem="J9U-4E-Lov" secondAttribute="trailing" id="ZQO-dk-5Rv"/>
@@ -371,7 +369,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="GeC-Zc-Hkm" id="Phj-5U-8Ra"/>
-                        <outlet property="mapButton" destination="FPo-pI-q9B" id="Mlx-IR-AwS"/>
+                        <outlet property="mapButton" destination="FPo-pI-q9B" id="w9v-RY-zk2"/>
                         <outlet property="textField" destination="J9U-4E-Lov" id="iFp-L8-ZM8"/>
                     </connections>
                 </viewController>
@@ -438,7 +436,7 @@
         <!--Info Posting Submit View Controller-->
         <scene sceneID="wm0-Rp-xst">
             <objects>
-                <viewController id="M0F-Qs-eeH" userLabel="Info Posting Submit View Controller" customClass="InfoPostingSubmitViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InfoPostingSubmitViewController" id="M0F-Qs-eeH" userLabel="Info Posting Submit View Controller" customClass="InfoPostingSubmitViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HqV-Ps-jdB"/>
                         <viewControllerLayoutGuide type="bottom" id="jbC-dE-3iE"/>
@@ -511,7 +509,6 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="ueh-JS-ZNz" id="xcL-1W-FWL"/>
-                        <outlet property="mapButton" destination="cOX-nZ-TIK" id="FTv-jX-8Qp"/>
                         <outlet property="mapView" destination="cQM-iF-avZ" id="Vdd-kK-Hrv"/>
                         <outlet property="submitButton" destination="cOX-nZ-TIK" id="PCI-oo-Qv6"/>
                         <outlet property="textField" destination="MXt-Js-iFH" id="8OR-iY-8Zm"/>

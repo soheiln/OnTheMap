@@ -26,6 +26,7 @@ struct Constants {
         static let studentLocationMethod = "https://api.parse.com/1/classes/StudentLocation"
         static let studentLocationMethodParameters = "?order=-updatedAt&limit=100"
     }
-
+    
+    static let MapBound = 1500.0
     
 }

@@ -15,24 +15,29 @@ class InfoPostingSubmitViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    var placeMark: [CLPlacemark]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        mapView.delegate = self
+        loadLocationOnMap()
+    }
         
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
+    func loadLocationOnMap() {
+        var annotation = MKPointAnnotation()
+        annotation.coordinate = (placeMark[0].location?.coordinate)!
+        print("annotation coordinate: \(annotation.coordinate)")
+        mapView.addAnnotation(annotation)
+        mapView.centerCoordinate = annotation.coordinate
+        var viewRegion = MKCoordinateRegionMakeWithDistance(annotation.coordinate, Constants.MapBound, Constants.MapBound)
+        var adjustedRegion = mapView.regionThatFits(viewRegion)
+        mapView.setRegion(adjustedRegion, animated: true)
+    }
     
 }
 

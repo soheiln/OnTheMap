@@ -8,26 +8,42 @@
 
 import UIKit
 
-class InfoPostingViewController: UIViewController {
+
+class InfoPostingViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var mapButton: UIButton!
+    var vc: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        vc = self
+        textField.text = "Enter location ..."
+        textField.delegate = self
+    }
         
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func cancelButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        print("cancelButtonPressed")
+//        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    
+    @IBAction func mapButtonPressed(sender: AnyObject) {
+        print("mapButtonPressed")
+        var address = textField.text!
+        if address == "" {
+            print("address nil")
+            UIUtilities.showAlret(callerViewController: vc, message: "Please enter an address")
+        } else {
+            print("address avail")
+            UIUtilities.openInfoSubmitVCWithAddress(callerViewController: vc, address: address)
+        }
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.text = ""
     }
     
 }

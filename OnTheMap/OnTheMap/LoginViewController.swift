@@ -119,7 +119,6 @@ class LoginViewController: UIViewController {
 }
 
 
-
 extension LoginViewController {
     // MARK: Helper functions
     private func showAlret(message: String) {
