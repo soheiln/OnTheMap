@@ -33,59 +33,16 @@ class LoginViewController: UIViewController {
             showAlret("Username or Password is empty. Please enter both.")
         } else {
             setUIEnabled(false)
-            
-            UdacityClient.getUdacitySession(username, password: password, completionHandler: { (data, response, error) in
-                
-                print("in getUdacitySession completion handler")
-                // handle error
-                guard (error == nil) else {
-                    self.showAlret("There was an error with login request: \(error)")
-                    self.setUIEnabled(true)
-                    return
-                }
-                
-                // handle status code other than 2XX
-                guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                    self.showAlret("Login failed. Incorrect username or password")
-                    self.setUIEnabled(true)
-                    return
-                }
-                
-                // handle empty data
-                guard var data = data else {
-                    self.showAlret("Login failed. (no response data from server)")
-                    self.setUIEnabled(true)
-                    return
-                }
-                
-                // remove first 5 characters from response (subset response data)
-                data = data.subdataWithRange(NSMakeRange(5, data.length - 5))
-                
-                // parse data
-                let parsedResult: AnyObject!
-                do {
-                    parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-                } catch {
-                    self.showAlret("Login failed. (could not parse JSON response")
-                    self.setUIEnabled(true)
-                    return
-                }
-                
-                // extract and store accountKey and sessionID
-                let account = parsedResult["account"] as! [String: AnyObject]
-                let session = parsedResult["session"] as! [String: AnyObject]
-                let accountKey = account["key"] as! String
-                let sessionID = session["id"] as! String
-                Model.getInstance().udacityAccountKey = accountKey
-                Model.getInstance().udacitySessionID = sessionID
-                
+
+            UdacityClient.getUdacitySession(callerViewController: self, username: username, password: password, completionHandler: {
+
                 // enable UI
                 performUIUpdatesOnMain {
                     self.setUIEnabled(true)
                     self.loadMapViewWithData(Model.getInstance().udacitySessionID!, accountKey: Model.getInstance().udacityAccountKey!)
                 }
                 
-                UdacityClient.getPublicUserData(accountKey, appDelegate: self.appDelegate, errorHandler: nil)
+                UdacityClient.getPublicUserData(Model.getInstance().udacityAccountKey!, errorHandler: nil)
             })
             
         }
@@ -128,7 +85,7 @@ extension LoginViewController {
         }
     }
     
-    private func setUIEnabled(enabled: Bool) {
+    public func setUIEnabled(enabled: Bool) {
         emailField.enabled = enabled
         passwordField.enabled = enabled
         loginButton.enabled = enabled

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/UdacityClient.swift"
-            timestampString = "484070041.157741"
+            timestampString = "484611576.857369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "deleteUdacitySession(_:)"
             landmarkType = "5">
          </BreakpointContent>

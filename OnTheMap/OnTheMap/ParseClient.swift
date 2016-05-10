@@ -89,6 +89,7 @@ class ParseClient {
                 if let errorHandler = errorHandler {
                     errorHandler(data, response, error_)
                 }
+                UIUtilities.showAlret(callerViewController: vc, message: "Failed to get student locations from server.")
                 return
             }
             
