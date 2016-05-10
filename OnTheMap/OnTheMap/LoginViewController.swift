@@ -20,11 +20,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    }
-
-    override func didReceiveMemoryWarning(  ) {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
     
@@ -88,6 +84,8 @@ class LoginViewController: UIViewController {
                     self.setUIEnabled(true)
                     self.loadMapViewWithData(self.appDelegate.udacitySessionID!, accountKey: self.appDelegate.udacityAccountKey!)
                 }
+                
+                UdacityClient.getPublicUserData(accountKey, appDelegate: self.appDelegate, errorHandler: nil)
             })
             
         }

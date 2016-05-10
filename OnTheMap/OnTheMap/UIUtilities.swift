@@ -13,11 +13,10 @@ import CoreLocation
 class UIUtilities {
     
     static func openInfoSubmitVCWithAddress(callerViewController vc: UIViewController, address: String) {
-        print("in openInfoSubmitVCWithAddress")
-        var geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address, completionHandler: { (placeMark, error) in
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address, completionHandler: { (placeMarks, error) in
             
-            guard let placeMark = placeMark else {
+            guard let placeMarks = placeMarks else {
                 // handle error
                 performUIUpdatesOnMain {
                     let alert = UIAlertController(title: "", message: "Could not find location on map. Please re-enter address.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -28,10 +27,12 @@ class UIUtilities {
                 return
             }
             
-            // placeMark available
+            // placeMarks available
             performUIUpdatesOnMain {
                 let infoSubmitVC = vc.storyboard?.instantiateViewControllerWithIdentifier("InfoPostingSubmitViewController") as! InfoPostingSubmitViewController
-                infoSubmitVC.placeMark = placeMark
+                infoSubmitVC.placeMarks = placeMarks
+                infoSubmitVC.address = address
+                infoSubmitVC.infoPostingVC = vc as! InfoPostingViewController
                 vc.presentViewController(infoSubmitVC, animated: true, completion: nil)
             }
             
@@ -45,6 +46,39 @@ class UIUtilities {
         let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
         alert.addAction(alertAction)
         vc.presentViewController(alert, animated: true, completion: nil)
+    }
+
+    
+    // This method takes caller ViewController object as arguments and loads the MapViewVC and wait for the
+    // getStudentLocation procedure to return before showing the pins on the map
+    static func loadMapViewWithData(callerViewController vc: UIViewController) {
+        // present mapView VC and wait for the data to
+        let tabBarVC = vc.storyboard?.instantiateViewControllerWithIdentifier("UITabBarController") as! UITabBarController
+        vc.presentViewController(tabBarVC, animated: true, completion: nil)
+
+        
+        //TODO: look up documentation and test this
+//        let mapViewVC = tabBarVC.rootView!.rootView!
+        let navigationVC = tabBarVC.selectedViewController! as! UINavigationController
+        let mapViewVC = navigationVC.topViewController as! MapViewController
+        //TODO: test above
+        
+        ParseClient.getStudentLocations({
+            
+            // handle error in getStudentLocations procedure call
+            print($2!.localizedDescription)
+            
+            }, completionHandler: { (studentLocations) in
+                
+                // getStudentLocations returned successfully
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.studentLocations = studentLocations
+                
+                performUIUpdatesOnMain {
+                    // locations loaded, load pins on the map
+                    mapViewVC.loadPins()
+                }
+        })
     }
 
 }

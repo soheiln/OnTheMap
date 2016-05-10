@@ -16,7 +16,6 @@ class ParseClient {
         let request = NSMutableURLRequest(URL: NSURL(string: Constants.Parse.studentLocationMethod + Constants.Parse.studentLocationMethodParameters)!)
         request.addValue(Constants.Parse.ApplicationID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(Constants.Parse.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
-        
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { (data, response, error_) in
             
@@ -65,7 +64,34 @@ class ParseClient {
     
     
     // method that posts a student location
-    func postStudentLocation(completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) {
+    static func postStudentLocation(studentLocation: StudentLocation, errorHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?, completionHandler: () -> Void) {
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
+        request.HTTPMethod = "POST"
+        request.addValue(Constants.Parse.ApplicationID, forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(Constants.Parse.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.HTTPBody = "{\"uniqueKey\": \"1234\", \"firstName\": \"\(studentLocation.firstName!)\", \"lastName\": \"\(studentLocation.lastName!)\",\"mapString\": \"\(studentLocation.mapString!)\", \"mediaURL\": \"\(studentLocation.mediaURL!)\",\"latitude\": \(studentLocation.latitute!), \"longitude\": \(studentLocation.longitude!)}".dataUsingEncoding(NSUTF8StringEncoding)
+        
+        print("{\"uniqueKey\": \"1234\", \"firstName\": \"\(studentLocation.firstName!)\", \"lastName\": \"\(studentLocation.lastName!)\",\"mapString\": \"\(studentLocation.mapString!)\", \"mediaURL\": \"\(studentLocation.mediaURL!)\",\"latitude\": \(studentLocation.latitute!), \"longitude\": \(studentLocation.longitude!)}\n\n")
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error_ in
+
+            // handle error
+            guard (error_ == nil) else {
+                if let errorHandler = errorHandler {
+                    errorHandler(data, response, error_)
+                }
+                return
+            }
+            
+            print("postStudentLocation request.HTTPBody: \(request.HTTPBody)\n\n")
+            print("postStudentLocation response: \(response)")
+            // success, call completion handle
+            completionHandler()
+        }
+        task.resume()
     }
 
 }

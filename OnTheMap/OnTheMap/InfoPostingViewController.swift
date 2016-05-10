@@ -25,19 +25,14 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
     }
         
     @IBAction func cancelButtonPressed(sender: AnyObject) {
-        print("cancelButtonPressed")
-//        dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
-
     
     @IBAction func mapButtonPressed(sender: AnyObject) {
-        print("mapButtonPressed")
-        var address = textField.text!
+        let address = textField.text!
         if address == "" {
-            print("address nil")
-            UIUtilities.showAlret(callerViewController: vc, message: "Please enter an address")
+            UIUtilities.showAlret(callerViewController: vc, message: "Address field empty. Please enter an address.")
         } else {
-            print("address avail")
             UIUtilities.openInfoSubmitVCWithAddress(callerViewController: vc, address: address)
         }
     }

@@ -63,6 +63,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         clearMap()
         ParseClient.getStudentLocations(nil, completionHandler: { (locations) in
             performUIUpdatesOnMain({
+                print("in getStudentLocations completion Handler")
                 self.appDelegate.studentLocations = locations
                 self.loadPins()
             })

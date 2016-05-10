@@ -42,19 +42,39 @@ class UdacityClient {
     }
     
     
-    // Method that gets the public user data
-    static func getPublicUserData(accountKey: String, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) {
+    // Method that gets the public user data and stores user's first and last name in appDelegate
+    static func getPublicUserData(accountKey: String, appDelegate: AppDelegate, errorHandler: ((NSError?) -> Void)? ) {
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/\(accountKey)")!)
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request, completionHandler: completionHandler)
+        let task = session.dataTaskWithRequest(request, completionHandler: { data, response, error in
+            guard var data = data else {
+                // handle error
+                if let errorHandler = errorHandler {
+                    errorHandler(error)
+                }
+                return
+            }
+            
+            // remove first 5 characters from response (subset response data)
+            data = data.subdataWithRange(NSMakeRange(5, data.length - 5))
+            
+            // parse data
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            } catch {
+                print("Error: \(error)")
+                return
+            }
+            
+            // extract user's first and last name and store it in appDelegate
+            let result = (parsedResult["user"]!) as! [String: AnyObject]
+            appDelegate.userFirstName = result["first_name"] as! String
+            appDelegate.userLastName = result["last_name"] as! String
+            print("User name extracted: \(appDelegate.userFirstName!) \(appDelegate.userLastName!)")
+            
+        })
         task.resume()
     }
-    
-    
-    
-    
-    
-    
-    
     
 }

@@ -19,4 +19,17 @@ struct StudentLocation {
     var uniqueKey: String?
     var latitute: Double?
     var longitude: Double?
+    
+    init() {
+        firstName = ""
+        lastName = ""
+        createdAt = ""
+        updatedAt = ""
+        mapString = ""
+        mediaURL = ""
+        objectID = ""
+        uniqueKey = ""
+        latitute = 0.0
+        longitude = 0.0
+    }
 }
