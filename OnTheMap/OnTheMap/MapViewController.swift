@@ -120,4 +120,10 @@ extension MapViewController {
         mapView.removeAnnotations(mapView.annotations)
     }
 
+    
+    @IBAction func logoutButtonPressed() {
+        let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.presentViewController(loginVC, animated: true, completion: nil)
+    }
 }
