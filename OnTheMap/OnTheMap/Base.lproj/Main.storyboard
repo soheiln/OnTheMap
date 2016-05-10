@@ -42,6 +42,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="usW-LE-4F3" userLabel="activityIndicator">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKV-UC-1js" userLabel="loginButton">
                                 <rect key="frame" x="50" y="325" width="500" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.52682924960310173" blue="0.20871100525641861" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,10 +83,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="tKV-UC-1js" secondAttribute="trailing" constant="30" id="QkX-Jl-ENY"/>
                             <constraint firstItem="5WL-30-P9y" firstAttribute="bottom" secondItem="Yiq-lA-kzc" secondAttribute="top" constant="-10" id="Scz-cq-50x"/>
                             <constraint firstItem="imA-iB-Pb1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Vn8-77-smh"/>
+                            <constraint firstItem="usW-LE-4F3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ejJ-dv-lW0"/>
                             <constraint firstItem="Yiq-lA-kzc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="fuJ-8q-nyP"/>
                             <constraint firstItem="wRn-C6-8v4" firstAttribute="centerY" secondItem="WBQ-ly-OUi" secondAttribute="centerY" id="gkb-M5-hkB"/>
                             <constraint firstItem="Yiq-lA-kzc" firstAttribute="bottom" secondItem="imA-iB-Pb1" secondAttribute="top" constant="-10" id="gmv-i1-e5u"/>
                             <constraint firstItem="tKV-UC-1js" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="hjb-XT-1kX"/>
+                            <constraint firstItem="usW-LE-4F3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hpx-NV-x7G"/>
                             <constraint firstItem="5WL-30-P9y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="iVG-Px-X8o"/>
                             <constraint firstItem="pyn-FK-KqL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="j95-E1-wLr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="imA-iB-Pb1" secondAttribute="trailing" constant="30" id="kFJ-TK-BRe"/>
@@ -97,6 +102,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="usW-LE-4F3" id="Af1-ZF-9L7"/>
                         <outlet property="emailField" destination="Yiq-lA-kzc" id="Zke-gH-Z9V"/>
                         <outlet property="loginButton" destination="tKV-UC-1js" id="urr-ai-U5J"/>
                         <outlet property="passwordField" destination="imA-iB-Pb1" id="55d-hq-yrn"/>

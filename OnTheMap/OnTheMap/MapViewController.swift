@@ -131,6 +131,8 @@ extension MapViewController {
 
     
     @IBAction func logoutButtonPressed() {
+        Model.getInstance().udacitySessionID = ""
+        Model.getInstance().udacityAccountKey = ""
         let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
         self.dismissViewControllerAnimated(true, completion: nil)
         self.presentViewController(loginVC, animated: true, completion: nil)

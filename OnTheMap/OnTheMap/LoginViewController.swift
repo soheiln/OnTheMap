@@ -14,13 +14,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     var appDelegate: AppDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
+        activityIndicator.color = UIColor.blueColor()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.stopAnimating()
+        clearFields()
     }
 
     
@@ -36,9 +41,7 @@ class LoginViewController: UIViewController {
 
             UdacityClient.getUdacitySession(callerViewController: self, username: username, password: password, completionHandler: {
 
-                // enable UI
                 performUIUpdatesOnMain {
-                    self.setUIEnabled(true)
                     self.loadMapViewWithData(Model.getInstance().udacitySessionID!, accountKey: Model.getInstance().udacityAccountKey!)
                 }
                 
@@ -53,13 +56,13 @@ class LoginViewController: UIViewController {
     // the map view with data
     func loadMapViewWithData(sessionID: String, accountKey: String) {
         ParseClient.getStudentLocations(callerViewController: self, errorHandler: {
-                print("in getStudentLocations error handler")
                 print($2!.localizedDescription)
             }, completionHandler: { (studentLocations) in
-                print("in getStudentLocations completion handler")
                 Model.getInstance().studentLocations = studentLocations
                 performUIUpdatesOnMain {
                     let tabBarVC = self.storyboard?.instantiateViewControllerWithIdentifier("UITabBarController") as! UITabBarController
+                    self.clearFields()
+                    self.setUIEnabled(true)
                     self.presentViewController(tabBarVC, animated: true, completion: nil)
                 }
         })
@@ -85,21 +88,29 @@ extension LoginViewController {
         }
     }
     
-    public func setUIEnabled(enabled: Bool) {
+    func setUIEnabled(enabled: Bool) {
         emailField.enabled = enabled
         passwordField.enabled = enabled
         loginButton.enabled = enabled
         
-        // adjust login button alpha
+        // adjust login button alpha and activityIndicator
         if enabled {
             loginButton.alpha = 1.0
+            activityIndicator.stopAnimating()
         } else {
             loginButton.alpha = 0.5
+            activityIndicator.startAnimating()
         }
     }
     
     private func logError(string: String) {
         print(string)
+    }
+    
+    // clears login fields
+    func clearFields() {
+        emailField.text = ""
+        passwordField.text = ""
     }
     
 }
