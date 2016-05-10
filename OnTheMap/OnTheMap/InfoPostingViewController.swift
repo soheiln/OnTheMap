@@ -15,6 +15,8 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var vc: UIViewController!
     
     override func viewDidLoad() {
@@ -22,6 +24,9 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
         vc = self
         textField.text = "Enter location ..."
         textField.delegate = self
+        activityIndicator.color = UIColor.whiteColor()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.stopAnimating()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +48,7 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
         if address == "" {
             UIUtilities.showAlret(callerViewController: vc, message: "Address field empty. Please enter an address.")
         } else {
+            activityIndicator.startAnimating()
             UIUtilities.openInfoSubmitVCWithAddress(callerViewController: vc, address: address)
         }
     }

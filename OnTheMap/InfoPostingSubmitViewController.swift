@@ -15,6 +15,7 @@ class InfoPostingSubmitViewController: UIViewController, MKMapViewDelegate, UITe
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    
     var placeMarks: [CLPlacemark]!
     var appDelegate: AppDelegate!
     var infoPostingVC: InfoPostingViewController!

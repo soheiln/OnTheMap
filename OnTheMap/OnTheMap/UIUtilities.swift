@@ -33,6 +33,7 @@ class UIUtilities {
                 infoSubmitVC.placeMarks = placeMarks
                 infoSubmitVC.address = address
                 infoSubmitVC.infoPostingVC = vc as! InfoPostingViewController
+                (vc as! InfoPostingViewController).activityIndicator.stopAnimating()
                 vc.presentViewController(infoSubmitVC, animated: true, completion: nil)
             }
             

@@ -345,10 +345,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="It3-ub-tI5" userLabel="activityIndicator">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NBe-vi-Qch" firstAttribute="leading" secondItem="1vj-M0-ley" secondAttribute="leading" id="0Fc-zh-ZQI"/>
+                            <constraint firstItem="It3-ub-tI5" firstAttribute="centerY" secondItem="1vj-M0-ley" secondAttribute="centerY" id="0aW-0t-Aze"/>
                             <constraint firstItem="GCa-8i-cbc" firstAttribute="centerY" secondItem="NBe-vi-Qch" secondAttribute="centerY" id="2bk-kg-fR1"/>
                             <constraint firstAttribute="trailing" secondItem="NBe-vi-Qch" secondAttribute="trailing" id="4NM-IV-yN5"/>
                             <constraint firstItem="GCa-8i-cbc" firstAttribute="top" secondItem="N5t-FJ-lvY" secondAttribute="bottom" constant="62" id="4Pa-yP-VSw"/>
@@ -357,6 +361,7 @@
                             <constraint firstItem="dmm-Yd-aEO" firstAttribute="top" secondItem="haB-Tm-t7t" secondAttribute="bottom" id="7PJ-fj-1gL"/>
                             <constraint firstItem="FPo-pI-q9B" firstAttribute="centerY" secondItem="haB-Tm-t7t" secondAttribute="centerY" id="7aC-A5-Gyb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GCa-8i-cbc" secondAttribute="trailing" constant="259" id="8A7-8y-vfp"/>
+                            <constraint firstItem="It3-ub-tI5" firstAttribute="centerX" secondItem="1vj-M0-ley" secondAttribute="centerX" id="Dkr-21-843"/>
                             <constraint firstItem="GCa-8i-cbc" firstAttribute="centerX" secondItem="NBe-vi-Qch" secondAttribute="centerX" id="EID-A0-Yg7"/>
                             <constraint firstItem="FPo-pI-q9B" firstAttribute="centerX" secondItem="haB-Tm-t7t" secondAttribute="centerX" id="J2i-uR-Q5Q"/>
                             <constraint firstItem="J9U-4E-Lov" firstAttribute="leading" secondItem="1vj-M0-ley" secondAttribute="leading" id="KEK-SQ-GNx"/>
@@ -386,6 +391,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="It3-ub-tI5" id="CCo-bU-bik"/>
                         <outlet property="cancelButton" destination="GeC-Zc-Hkm" id="Phj-5U-8Ra"/>
                         <outlet property="mapButton" destination="FPo-pI-q9B" id="w9v-RY-zk2"/>
                         <outlet property="textField" destination="J9U-4E-Lov" id="iFp-L8-ZM8"/>
