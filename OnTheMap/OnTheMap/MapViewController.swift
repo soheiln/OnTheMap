@@ -15,12 +15,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var pinButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var appDelegate: AppDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         mapView.delegate = self
+        
+        // start animating activity monitor until pins are loaded
+        showActivityIndicator()
         loadPins()
     }
     
@@ -60,12 +65,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // called when refresh button is pressed. will request location data from the server update UI
     @IBAction func refreshButtonPressed(sender: AnyObject) {
+        showActivityIndicator()
         clearMap()
         ParseClient.getStudentLocations(callerViewController: self, errorHandler: nil, completionHandler: { (locations) in
             performUIUpdatesOnMain({
-                print("in getStudentLocations completion Handler")
                 Model.getInstance().studentLocations = locations
                 self.loadPins()
+                self.hideActivityIndicator()
             })
         })
     }
@@ -113,6 +119,9 @@ extension MapViewController {
         // When the array is complete, we add the annotations to the map.
         self.mapView.addAnnotations(annotations)
         mapView.setNeedsDisplay()
+        
+        // hide activityIndicator
+        hideActivityIndicator()
     }
     
     // removes all pins and annotations from map
@@ -125,5 +134,17 @@ extension MapViewController {
         let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
         self.dismissViewControllerAnimated(true, completion: nil)
         self.presentViewController(loginVC, animated: true, completion: nil)
+    }
+    
+    
+    // shows the activity indicator over map. called from viewDidLoad
+    func showActivityIndicator() {
+        activityIndicator.startAnimating()
+    }
+    
+    // hides the activity indicator from map. called when pins are loaded on map
+    func hideActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.stopAnimating()
     }
 }

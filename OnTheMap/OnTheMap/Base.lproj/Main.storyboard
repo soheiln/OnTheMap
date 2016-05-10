@@ -205,6 +205,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gVF-2q-Ywk">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6lh-Cu-p44" userLabel="activityIndicator">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -213,7 +216,9 @@
                             <constraint firstItem="gVF-2q-Ywk" firstAttribute="centerX" secondItem="0M7-0h-fhO" secondAttribute="centerX" id="SUY-uU-LTb"/>
                             <constraint firstAttribute="trailing" secondItem="gVF-2q-Ywk" secondAttribute="trailing" id="ad1-lG-Na5"/>
                             <constraint firstItem="xor-EJ-tq7" firstAttribute="top" secondItem="gVF-2q-Ywk" secondAttribute="bottom" id="d6U-IB-MYu"/>
+                            <constraint firstItem="6lh-Cu-p44" firstAttribute="centerY" secondItem="0M7-0h-fhO" secondAttribute="centerY" id="d9A-79-Koz"/>
                             <constraint firstItem="gVF-2q-Ywk" firstAttribute="leading" secondItem="0M7-0h-fhO" secondAttribute="leading" id="psG-LV-T1L"/>
+                            <constraint firstItem="6lh-Cu-p44" firstAttribute="centerX" secondItem="0M7-0h-fhO" secondAttribute="centerX" id="tg8-8a-DPd"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -247,6 +252,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="6lh-Cu-p44" id="S4x-Qo-ThR"/>
                         <outlet property="logoutButton" destination="BZU-Cd-aHB" id="29x-6P-b74"/>
                         <outlet property="mapView" destination="gVF-2q-Ywk" id="IU3-i2-Oa4"/>
                         <outlet property="pinButton" destination="rAC-qo-CLI" id="FiE-ci-gTh"/>
