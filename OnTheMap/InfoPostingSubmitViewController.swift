@@ -31,6 +31,16 @@ class InfoPostingSubmitViewController: UIViewController, MKMapViewDelegate, UITe
         vc = self
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotification()
+    }
+    
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -66,7 +76,6 @@ class InfoPostingSubmitViewController: UIViewController, MKMapViewDelegate, UITe
                     self.infoPostingVC.dismissViewControllerAnimated(false, completion: nil)
 
                     // present MapViewVC
-//                    UIUtilities.loadMapViewWithData(callerViewController: self)
                     let tabBarVC = self.storyboard?.instantiateViewControllerWithIdentifier("UITabBarController") as! UITabBarController
                     self.presentViewController(tabBarVC, animated: true, completion: nil)
 
@@ -76,5 +85,38 @@ class InfoPostingSubmitViewController: UIViewController, MKMapViewDelegate, UITe
         })
         
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    // MARK: Keyboard Notification Subscription
+    
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotification() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+
+    
+    func keyboardWillShow(notification: NSNotification) {
+        self.view.frame.origin.y = getKeyboardHeight(notification) * -1
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.CGRectValue().height
+    }
+
 }
 
