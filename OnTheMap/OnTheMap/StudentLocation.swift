@@ -32,4 +32,18 @@ struct StudentLocation {
         latitute = 0.0
         longitude = 0.0
     }
+    
+    init(dictionary: [String : AnyObject]) {
+        firstName = dictionary["firstName"] as! String
+        lastName = dictionary["lastName"] as! String
+        createdAt = dictionary["createdAt"] as! String
+        updatedAt = dictionary["updatedAt"] as! String
+        mapString = dictionary["mapString"] as! String
+        mediaURL = dictionary["mediaURL"] as! String
+        objectID = dictionary["objectID"] as! String
+        uniqueKey = dictionary["uniqueKey"] as! String
+        latitute = dictionary["latitute"] as! Double
+        longitude = dictionary["longitude"] as! Double
+    }
+
 }
