@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 class ParseClient {
     
     // method that gets student locations
-    static func getStudentLocations(errorHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?, completionHandler: ([StudentLocation]) -> Void) {
+    static func getStudentLocations(callerViewController vc: UIViewController, errorHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?, completionHandler: ([StudentLocation]) -> Void) {
 
         let request = NSMutableURLRequest(URL: NSURL(string: Constants.Parse.studentLocationMethod + Constants.Parse.studentLocationMethodParameters)!)
         request.addValue(Constants.Parse.ApplicationID, forHTTPHeaderField: "X-Parse-Application-Id")
@@ -24,6 +25,13 @@ class ParseClient {
                 if let errorHandler = errorHandler {
                     errorHandler(data, response, error_)
                 }
+                UIUtilities.showAlret(callerViewController: vc, message: "Failed to get student locations from server.")
+                return
+            }
+            
+            // handle status code other than 2XX
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                UIUtilities.showAlret(callerViewController: vc, message: "Failed to get student locations from server.")
                 return
             }
             

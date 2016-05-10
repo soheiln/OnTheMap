@@ -95,7 +95,7 @@ class LoginViewController: UIViewController {
     // This method takes Udacity sessionID and accountKey as arguments and loads
     // the map view with data
     func loadMapViewWithData(sessionID: String, accountKey: String) {
-        ParseClient.getStudentLocations({
+        ParseClient.getStudentLocations(callerViewController: self, errorHandler: {
                 print("in getStudentLocations error handler")
                 print($2!.localizedDescription)
             }, completionHandler: { (studentLocations) in

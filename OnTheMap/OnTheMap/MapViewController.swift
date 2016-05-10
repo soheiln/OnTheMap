@@ -61,7 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // called when refresh button is pressed. will request location data from the server update UI
     @IBAction func refreshButtonPressed(sender: AnyObject) {
         clearMap()
-        ParseClient.getStudentLocations(nil, completionHandler: { (locations) in
+        ParseClient.getStudentLocations(callerViewController: self, errorHandler: nil, completionHandler: { (locations) in
             performUIUpdatesOnMain({
                 print("in getStudentLocations completion Handler")
                 self.appDelegate.studentLocations = locations

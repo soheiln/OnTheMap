@@ -63,7 +63,7 @@ class UIUtilities {
         let mapViewVC = navigationVC.topViewController as! MapViewController
         //TODO: test above
         
-        ParseClient.getStudentLocations({
+        ParseClient.getStudentLocations(callerViewController: vc, errorHandler: {
             
             // handle error in getStudentLocations procedure call
             print($2!.localizedDescription)
