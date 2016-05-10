@@ -56,12 +56,8 @@ class UIUtilities {
         let tabBarVC = vc.storyboard?.instantiateViewControllerWithIdentifier("UITabBarController") as! UITabBarController
         vc.presentViewController(tabBarVC, animated: true, completion: nil)
 
-        
-        //TODO: look up documentation and test this
-//        let mapViewVC = tabBarVC.rootView!.rootView!
         let navigationVC = tabBarVC.selectedViewController! as! UINavigationController
         let mapViewVC = navigationVC.topViewController as! MapViewController
-        //TODO: test above
         
         ParseClient.getStudentLocations(callerViewController: vc, errorHandler: {
             

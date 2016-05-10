@@ -67,7 +67,7 @@ class InfoPostingSubmitViewController: UIViewController, MKMapViewDelegate, UITe
         sl.mediaURL = textField.text
         sl.latitute = (placeMarks[0].location?.coordinate)!.latitude
         sl.longitude = (placeMarks[0].location?.coordinate)!.longitude
-        ParseClient.postStudentLocation(sl, errorHandler: { data,response, error in
+        ParseClient.postStudentLocation(callerViewController: self, studentLocation: sl, errorHandler: { data,response, error in
                 print("Error in posting student location")
             }, completionHandler: {
                 performUIUpdatesOnMain {

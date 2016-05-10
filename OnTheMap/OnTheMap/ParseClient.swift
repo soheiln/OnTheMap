@@ -72,7 +72,7 @@ class ParseClient {
     
     
     // method that posts a student location
-    static func postStudentLocation(studentLocation: StudentLocation, errorHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?, completionHandler: () -> Void) {
+    static func postStudentLocation(callerViewController vc: UIViewController, studentLocation: StudentLocation, errorHandler: ((NSData?, NSURLResponse?, NSError?) -> Void)?, completionHandler: () -> Void) {
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
         request.HTTPMethod = "POST"
@@ -91,6 +91,13 @@ class ParseClient {
                 }
                 return
             }
+            
+            // handle status code other than 2XX
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                UIUtilities.showAlret(callerViewController: vc, message: "Failed to get student locations from server.")
+                return
+            }
+
             
             // success, call completion handle
             completionHandler()
