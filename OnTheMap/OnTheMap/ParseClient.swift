@@ -73,8 +73,6 @@ class ParseClient {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = "{\"uniqueKey\": \"1234\", \"firstName\": \"\(studentLocation.firstName!)\", \"lastName\": \"\(studentLocation.lastName!)\",\"mapString\": \"\(studentLocation.mapString!)\", \"mediaURL\": \"\(studentLocation.mediaURL!)\",\"latitude\": \(studentLocation.latitute!), \"longitude\": \(studentLocation.longitude!)}".dataUsingEncoding(NSUTF8StringEncoding)
         
-        print("{\"uniqueKey\": \"1234\", \"firstName\": \"\(studentLocation.firstName!)\", \"lastName\": \"\(studentLocation.lastName!)\",\"mapString\": \"\(studentLocation.mapString!)\", \"mediaURL\": \"\(studentLocation.mediaURL!)\",\"latitude\": \(studentLocation.latitute!), \"longitude\": \(studentLocation.longitude!)}\n\n")
-        
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error_ in
 
@@ -86,8 +84,6 @@ class ParseClient {
                 return
             }
             
-            print("postStudentLocation request.HTTPBody: \(request.HTTPBody)\n\n")
-            print("postStudentLocation response: \(response)")
             // success, call completion handle
             completionHandler()
         }

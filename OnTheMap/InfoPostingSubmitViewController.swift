@@ -62,8 +62,8 @@ class InfoPostingSubmitViewController: UIViewController, MKMapViewDelegate, UITe
             }, completionHandler: {
                 performUIUpdatesOnMain {
                     // dismiss infoPosting and infoPostingSubmit VCs
-                    self.infoPostingVC.dismissViewControllerAnimated(false, completion: nil)
                     self.dismissViewControllerAnimated(false, completion: nil)
+                    self.infoPostingVC.dismissViewControllerAnimated(false, completion: nil)
 
                     // present MapViewVC
 //                    UIUtilities.loadMapViewWithData(callerViewController: self)
