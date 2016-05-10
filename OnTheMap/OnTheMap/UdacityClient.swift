@@ -69,9 +69,9 @@ class UdacityClient {
             
             // extract user's first and last name and store it in appDelegate
             let result = (parsedResult["user"]!) as! [String: AnyObject]
-            appDelegate.userFirstName = result["first_name"] as! String
-            appDelegate.userLastName = result["last_name"] as! String
-            print("User name extracted: \(appDelegate.userFirstName!) \(appDelegate.userLastName!)")
+            Model.getInstance().userFirstName = result["first_name"] as! String
+            Model.getInstance().userLastName = result["last_name"] as! String
+            print("User name extracted: \(Model.getInstance().userFirstName!) \(Model.getInstance().userLastName!)")
             
         })
         task.resume()

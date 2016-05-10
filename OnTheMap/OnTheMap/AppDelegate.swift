@@ -13,14 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: Properties
     var window: UIWindow?
-    var udacitySessionID: String? = nil
-    var udacityAccountKey: String? = nil
-    var studentLocations: [StudentLocation]?
-    var userFirstName: String?
-    var userLastName: String?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        Model.getInstance() // to instantiance the singleton Model instance for future reference
         return true
     }
 

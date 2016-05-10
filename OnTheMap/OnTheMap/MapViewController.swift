@@ -64,7 +64,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         ParseClient.getStudentLocations(callerViewController: self, errorHandler: nil, completionHandler: { (locations) in
             performUIUpdatesOnMain({
                 print("in getStudentLocations completion Handler")
-                self.appDelegate.studentLocations = locations
+                Model.getInstance().studentLocations = locations
                 self.loadPins()
             })
         })
@@ -77,7 +77,7 @@ extension MapViewController {
     func loadPins() {
         // The "locations" array is an array of dictionary objects that are similar to the JSON
         // data that you can download from parse.
-        let locations = appDelegate.studentLocations!
+        let locations = Model.getInstance().studentLocations!
         
         // We will create an MKPointAnnotation for each dictionary in "locations". The
         // point annotations will be stored in this array, and then provided to the map view.

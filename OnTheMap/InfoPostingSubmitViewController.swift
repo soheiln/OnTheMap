@@ -51,8 +51,8 @@ class InfoPostingSubmitViewController: UIViewController, MKMapViewDelegate, UITe
 
     @IBAction func submitButtonPressed(sender: AnyObject) {
         var sl = StudentLocation()
-        sl.firstName = appDelegate.userFirstName
-        sl.lastName = appDelegate.userLastName
+        sl.firstName = Model.getInstance().userFirstName
+        sl.lastName = Model.getInstance().userLastName
         sl.mapString = address
         sl.mediaURL = textField.text
         sl.latitute = (placeMarks[0].location?.coordinate)!.latitude

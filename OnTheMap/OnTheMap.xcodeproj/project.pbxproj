@@ -24,6 +24,7 @@
 		185B069E1CDA72D8007CABE3 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B069D1CDA72D8007CABE3 /* ParseClient.swift */; };
 		185B06A01CDA749A007CABE3 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B069F1CDA749A007CABE3 /* StudentLocation.swift */; };
 		18DE54201CDD02A200F11EF0 /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DE541F1CDD02A200F11EF0 /* UIUtilities.swift */; };
+		18DE54611CE2893A00F11EF0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DE54601CE2893A00F11EF0 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		185B069D1CDA72D8007CABE3 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		185B069F1CDA749A007CABE3 /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		18DE541F1CDD02A200F11EF0 /* UIUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
+		18DE54601CE2893A00F11EF0 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		185B065E1CD94F3B007CABE3 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				18DE545F1CE2892900F11EF0 /* Model */,
 				185B06961CDA449D007CABE3 /* Clients */,
 				185B06951CDA4472007CABE3 /* ViewControllers */,
 				185B065F1CD94F3B007CABE3 /* AppDelegate.swift */,
@@ -169,6 +172,14 @@
 				185B069F1CDA749A007CABE3 /* StudentLocation.swift */,
 			);
 			name = Clients;
+			sourceTree = "<group>";
+		};
+		18DE545F1CE2892900F11EF0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18DE54601CE2893A00F11EF0 /* Model.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 				185B06901CD950B6007CABE3 /* ListViewController.swift in Sources */,
 				185B06921CD950DE007CABE3 /* InfoPostingViewController.swift in Sources */,
 				185B06601CD94F3B007CABE3 /* AppDelegate.swift in Sources */,
+				18DE54611CE2893A00F11EF0 /* Model.swift in Sources */,
 				185B06981CDA44C7007CABE3 /* UdacityClient.swift in Sources */,
 				185B069E1CDA72D8007CABE3 /* ParseClient.swift in Sources */,
 				185B06941CD97620007CABE3 /* InfoPostingSubmitViewController.swift in Sources */,

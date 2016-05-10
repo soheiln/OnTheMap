@@ -29,21 +29,21 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: TableView Delegate Implementation
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("in tableView numRows: \(appDelegate.studentLocations!.count)")
-        return appDelegate.studentLocations!.count
+        print("in tableView numRows: \(Model.getInstance().studentLocations!.count)")
+        return Model.getInstance().studentLocations!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tableCell")!
-        let sl = appDelegate.studentLocations![indexPath.row]
+        let sl = Model.getInstance().studentLocations![indexPath.row]
         cell.imageView?.image = pinImage
         cell.textLabel!.text = sl.firstName! + " " + sl.lastName!
         return cell
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        print("in tableView didSelectRow: \(appDelegate.studentLocations![indexPath.row].mediaURL!)")
-        if let url = appDelegate.studentLocations![indexPath.row].mediaURL {
+        print("in tableView didSelectRow: \(Model.getInstance().studentLocations![indexPath.row].mediaURL!)")
+        if let url = Model.getInstance().studentLocations![indexPath.row].mediaURL {
             let app = UIApplication.sharedApplication()
             app.openURL(NSURL(string: url)!)
         } else {

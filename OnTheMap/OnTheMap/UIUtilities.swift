@@ -71,8 +71,7 @@ class UIUtilities {
             }, completionHandler: { (studentLocations) in
                 
                 // getStudentLocations returned successfully
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                appDelegate.studentLocations = studentLocations
+                Model.getInstance().studentLocations = studentLocations
                 
                 performUIUpdatesOnMain {
                     // locations loaded, load pins on the map

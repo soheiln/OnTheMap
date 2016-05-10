@@ -76,13 +76,13 @@ class LoginViewController: UIViewController {
                 let session = parsedResult["session"] as! [String: AnyObject]
                 let accountKey = account["key"] as! String
                 let sessionID = session["id"] as! String
-                self.appDelegate.udacityAccountKey = accountKey
-                self.appDelegate.udacitySessionID = sessionID
+                Model.getInstance().udacityAccountKey = accountKey
+                Model.getInstance().udacitySessionID = sessionID
                 
                 // enable UI
                 performUIUpdatesOnMain {
                     self.setUIEnabled(true)
-                    self.loadMapViewWithData(self.appDelegate.udacitySessionID!, accountKey: self.appDelegate.udacityAccountKey!)
+                    self.loadMapViewWithData(Model.getInstance().udacitySessionID!, accountKey: Model.getInstance().udacityAccountKey!)
                 }
                 
                 UdacityClient.getPublicUserData(accountKey, appDelegate: self.appDelegate, errorHandler: nil)
@@ -100,7 +100,7 @@ class LoginViewController: UIViewController {
                 print($2!.localizedDescription)
             }, completionHandler: { (studentLocations) in
                 print("in getStudentLocations completion handler")
-                self.appDelegate.studentLocations = studentLocations
+                Model.getInstance().studentLocations = studentLocations
                 performUIUpdatesOnMain {
                     let tabBarVC = self.storyboard?.instantiateViewControllerWithIdentifier("UITabBarController") as! UITabBarController
                     self.presentViewController(tabBarVC, animated: true, completion: nil)
