@@ -70,7 +70,7 @@ class UdacityClient {
             Model.getInstance().udacitySessionID = sessionID
 
             
-            // success, call completion handler on Main thread
+            // success, call completion handler
             completionHandler()
             
         }
@@ -127,10 +127,54 @@ class UdacityClient {
             let result = (parsedResult["user"]!) as! [String: AnyObject]
             Model.getInstance().userFirstName = result["first_name"] as! String
             Model.getInstance().userLastName = result["last_name"] as! String
-            print("User name extracted: \(Model.getInstance().userFirstName!) \(Model.getInstance().userLastName!)")
-            
         })
         task.resume()
+    }
+    
+    // method that deletes udacity session with server. Used for logout functionality
+    static func deleteUdacitySession(callerViewController vc: UIViewController, errorHandler: (() -> Void), completionHandler: () -> Void) {
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
+        request.HTTPMethod = "DELETE"
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+            
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            
+            // handle error
+            guard (error == nil) else {
+                UIUtilities.showAlret(callerViewController: vc, message: "There was an error with logout request: \(error)")
+                errorHandler()
+                return
+            }
+            
+            // handle status code other than 2XX
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                UIUtilities.showAlret(callerViewController: vc, message: "Logout failed.")
+                errorHandler()
+                return
+            }
+            
+            // handle empty data
+            guard var data = data else {
+                UIUtilities.showAlret(callerViewController: vc, message: "Logout failed.")
+                errorHandler()
+                return
+            }
+            
+            // -- Request succeeded --
+            completionHandler()
+            
+        }
+        task.resume()
+
     }
     
 }

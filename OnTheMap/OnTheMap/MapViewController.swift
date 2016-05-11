@@ -25,6 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
         // start animating activity monitor until pins are loaded
+        activityIndicator.color = UIColor.blueColor()
         showActivityIndicator()
         loadPins()
     }
@@ -131,11 +132,20 @@ extension MapViewController {
 
     
     @IBAction func logoutButtonPressed() {
-        Model.getInstance().udacitySessionID = ""
-        Model.getInstance().udacityAccountKey = ""
-        let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.presentViewController(loginVC, animated: true, completion: nil)
+        showActivityIndicator()
+        UdacityClient.deleteUdacitySession(callerViewController: self, errorHandler: {
+            performUIUpdatesOnMain {
+                self.hideActivityIndicator()
+            }
+        }, completionHandler: {
+            performUIUpdatesOnMain {
+                Model.getInstance().udacitySessionID = ""
+                Model.getInstance().udacityAccountKey = ""
+                let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+                self.dismissViewControllerAnimated(true, completion: nil)
+                self.presentViewController(loginVC, animated: true, completion: nil)
+            }
+        })        
     }
     
     

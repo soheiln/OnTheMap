@@ -14,22 +14,23 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var pinButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var appDelegate: AppDelegate!
     var pinImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("in listVC view did load")
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         pinImage = UIImage(named: "pin")
         tableView.dataSource = self
         tableView.delegate = self
+        hideActivityIndicator()
     }
     
     // MARK: TableView Delegate Implementation
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("in tableView numRows: \(Model.getInstance().studentLocations!.count)")
         return Model.getInstance().studentLocations!.count
     }
     
@@ -42,7 +43,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        print("in tableView didSelectRow: \(Model.getInstance().studentLocations![indexPath.row].mediaURL!)")
         if let url = Model.getInstance().studentLocations![indexPath.row].mediaURL {
             let app = UIApplication.sharedApplication()
             app.openURL(NSURL(string: url)!)
@@ -53,12 +53,22 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func logoutButtonPressed() {
-        Model.getInstance().udacitySessionID = ""
-        Model.getInstance().udacityAccountKey = ""
-        let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.presentViewController(loginVC, animated: true, completion: nil)
+        showActivityIndicator()
+        UdacityClient.deleteUdacitySession(callerViewController: self, errorHandler: {
+            performUIUpdatesOnMain {
+                self.hideActivityIndicator()
+            }
+            }, completionHandler: {
+                performUIUpdatesOnMain {
+                    Model.getInstance().udacitySessionID = ""
+                    Model.getInstance().udacityAccountKey = ""
+                    let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.presentViewController(loginVC, animated: true, completion: nil)
+                }
+        })
     }
+
 
 }
 
@@ -71,6 +81,17 @@ extension ListViewController {
             alert.addAction(alertAction)
             self.presentViewController(alert, animated: true, completion: nil)
         }
+    }
+
+    // shows the activity indicator over map. called from viewDidLoad
+    func showActivityIndicator() {
+        activityIndicator.startAnimating()
+    }
+    
+    // hides the activity indicator from map. called when pins are loaded on map
+    func hideActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.stopAnimating()
     }
 
 }

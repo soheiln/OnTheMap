@@ -22,6 +22,7 @@ class UIUtilities {
                     let alert = UIAlertController(title: "", message: "Could not find location on map. Please re-enter address.", preferredStyle: UIAlertControllerStyle.Alert)
                     let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                     alert.addAction(alertAction)
+                    (vc as! InfoPostingViewController).activityIndicator.stopAnimating()
                     vc.presentViewController(alert, animated: true, completion: nil)
                 }
                 return

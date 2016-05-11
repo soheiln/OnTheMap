@@ -79,7 +79,6 @@ class InfoPostingSubmitViewController: UIViewController, MKMapViewDelegate, UITe
                     // present MapViewVC
                     let tabBarVC = self.storyboard?.instantiateViewControllerWithIdentifier("UITabBarController") as! UITabBarController
                     self.presentViewController(tabBarVC, animated: true, completion: nil)
-
                     
                 }
                 

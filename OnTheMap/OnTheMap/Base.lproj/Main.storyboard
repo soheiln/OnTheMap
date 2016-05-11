@@ -148,13 +148,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ehs-u2-8dd" userLabel="activityIndicator">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ehs-u2-8dd" firstAttribute="centerY" secondItem="amY-If-gWt" secondAttribute="centerY" id="29n-vl-gLV"/>
                             <constraint firstItem="KXY-5F-5Jn" firstAttribute="centerX" secondItem="amY-If-gWt" secondAttribute="centerX" id="4fU-gE-LJs"/>
                             <constraint firstAttribute="trailing" secondItem="KXY-5F-5Jn" secondAttribute="trailing" id="Ex6-0x-eUU"/>
                             <constraint firstItem="KXY-5F-5Jn" firstAttribute="leading" secondItem="amY-If-gWt" secondAttribute="leading" id="ZQf-9q-8Yw"/>
                             <constraint firstItem="KXY-5F-5Jn" firstAttribute="top" secondItem="MXU-Ci-jSh" secondAttribute="bottom" id="bOr-Fx-n7p"/>
+                            <constraint firstItem="Ehs-u2-8dd" firstAttribute="centerX" secondItem="amY-If-gWt" secondAttribute="centerX" id="bym-8J-VIN"/>
                             <constraint firstItem="KXY-5F-5Jn" firstAttribute="centerY" secondItem="amY-If-gWt" secondAttribute="centerY" id="mXR-XV-gBh"/>
                             <constraint firstItem="YdS-hM-M0Q" firstAttribute="top" secondItem="KXY-5F-5Jn" secondAttribute="bottom" id="zzA-63-QGk"/>
                         </constraints>
@@ -186,6 +192,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Ehs-u2-8dd" id="vly-QO-NEX"/>
                         <outlet property="logoutButton" destination="UdB-WD-2b4" id="kTa-t0-OuF"/>
                         <outlet property="pinButton" destination="9sm-1B-642" id="neg-TU-tDs"/>
                         <outlet property="refreshButton" destination="ClA-IT-Y3m" id="kzA-br-Syl"/>
@@ -553,6 +560,6 @@
         <image name="udacity" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="o3d-Nm-BrA"/>
+        <segue reference="AOm-9U-WEI"/>
     </inferredMetricsTieBreakers>
 </document>
